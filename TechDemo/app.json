@@ -17,6 +17,7 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.test.techdemo",
       "supportsTablet": true
     },
     "android": {
