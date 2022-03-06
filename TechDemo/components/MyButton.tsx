@@ -32,7 +32,7 @@ const MyButton = (props: any) => {
     }
 
     return (
-        <Pressable style={[buttonContainer, sizeContainer]} onPress={() => {console.log(props.text)}}>
+        <Pressable style={[buttonContainer, sizeContainer]} onPress={props.onPressFn}>
         <Text style={[buttonText, sizeText]}>{props.text}</Text>
         </Pressable>
     )
