@@ -11,7 +11,6 @@ export default function SignUpScreen() {
         <MyField title='Last Name' type='text'/>
         <MyField title='Email' type='text'/>
         <MyField title='Password' type='text'/>
-
         <MyButton text="Sign Up" type="primary" size="large" />
     </View>
   );

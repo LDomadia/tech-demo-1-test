@@ -3,6 +3,13 @@ import { Pressable, Text, StyleSheet } from "react-native";
 
 // make this simpler using https://reactnative.dev/docs/stylesheet 
 
+export type Props = {
+    text: string,
+    type: string,
+    size: string,
+    onPressFn: Function
+}
+
 const MyButton = (props: any) => {
     let buttonContainer = {};
     let buttonText = {};
@@ -73,7 +80,7 @@ const styles = StyleSheet.create({
     },
     smallContainer: {
         paddingHorizontal: 16,
-        paddingVertical: 6,
+        paddingVertical: 4,
         width: 75,
         borderRadius: 16,
         borderWidth: 1,
@@ -83,7 +90,7 @@ const styles = StyleSheet.create({
     },
     mediumContainer: {
         paddingHorizontal: 32,
-        paddingVertical: 12,
+        paddingVertical: 8,
         width: 150,
         borderRadius: 32,
         borderWidth: 2,
@@ -93,8 +100,8 @@ const styles = StyleSheet.create({
     },
     largeContainer: {
         paddingHorizontal: 48,
-        paddingVertical: 18,
-        width: 225,
+        paddingVertical: 12,
+        width: 300,
         borderRadius: 48,
         borderWidth: 3,
     },
