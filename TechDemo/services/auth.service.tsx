@@ -14,6 +14,6 @@ const signUpEmail = async (fName: string, lName: string, email: string, password
         return 'Success!';
     })
     .catch((e) => {
-        return `${e}`;
+        return e.message;
     })
 }

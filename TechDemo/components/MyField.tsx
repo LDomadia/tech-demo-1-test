@@ -1,20 +1,20 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { TextInput, Text, StyleSheet, View } from "react-native";
 
 // https://www.npmjs.com/package/react-native-floating-label-input
 
 export type Props = {
     title: string,
-    type: string
+    type: string,
+    onChangeFn: Function
 }
 
-const MyField: React.FC<Props> = ({
-    title, type
-}) => {
+const MyField: React.FC<Props> = ({ title, type, onChangeFn }) => {
+
     return ( 
         <View style={styles.container}>
             <Text>{title}</Text>
-            <TextInput style={styles.input} />
+            <TextInput style={styles.input} autoCapitalize={"none"} onChangeText={(value) => onChangeFn(value)}/>
         </View>
     );
 }
