@@ -1,8 +1,9 @@
-import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, View} from 'react-native';
 import MyButton from '../components/MyButton';
 import MyField from '../components/MyField';
+import { signUpWithEmail } from '../services/firebase';
+
 
 export default function SignUpScreen() {
   const [fName, setFName] = useState("");
@@ -16,9 +17,8 @@ export default function SignUpScreen() {
         <MyField title='Last Name' type='text' onChangeFn={setLName}/>
         <MyField title='Email' type='text' onChangeFn={setEmail}/>
         <MyField title='Password' type='text' onChangeFn={setPassword}/>
-        <MyButton text="Sign Up" type="primary" size="large" onPressFn={() => {
-          console.log(fName)
-        }} />
+        <MyButton text="Sign Up" type="primary" size="large" onPressFn={
+          () => { signUpWithEmail(fName, lName, email, password) }} />
     </View>
   );
 }
