@@ -10,28 +10,48 @@ export type Props = {
 }
 
 const MyField: React.FC<Props> = ({ title, type, onChangeFn }) => {
-
+    const [focus, setFocus] = useState(false);
     return ( 
         <View style={styles.container}>
-            <Text>{title}</Text>
-            <TextInput style={styles.input} autoCapitalize={"none"} onChangeText={(value) => onChangeFn(value)}/>
+            <Text style={styles.text}>{title}</Text>
+            <TextInput 
+                style={focus ? styles.focus : styles.input} 
+                autoCapitalize={"none"} 
+                onFocus={() => setFocus(true)} 
+                onBlur={() => setFocus(false)} 
+                onChangeText={(value) => onChangeFn(value)}/>
         </View>
-    );
+    ); 
 }
 
 const styles = StyleSheet.create({
-    input: {
-        height: 40,
+    focus: {
+        height: 50,
         width: 300,
+        fontSize: 16,
+        borderColor: '#007AFF',
         borderWidth: 1,
-        borderRadius: 10,
+        borderRadius: 5,
+        marginTop: 5,
+        padding: 10,
+    },
+    input: {
+        height: 50,
+        width: 300,
+        fontSize: 16,
+        borderColor: 'gray',
+        borderWidth: 1,
+        borderRadius: 5,
         marginTop: 5,
         padding: 10,
     },
     container: {
         width: 300,
         height: 60,
-        marginBottom: 20
+        marginBottom: 30
+    },
+    text: {
+        fontSize: 16
     }
 });
 
