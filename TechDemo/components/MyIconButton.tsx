@@ -1,14 +1,14 @@
-import { FontAwesome, Ionicons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import { Pressable, StyleSheet } from "react-native";
 
 export type Props = {
-    icon?: string
+    icon: string
 }
 
 const MyIconButton: React.FC<Props> = ({icon}) => {
     return (
         <Pressable style={styles.container}>
-            <Ionicons name={icon ? icon : ''} size={30} color='white'></Ionicons>
+            <Ionicons name={icon} size={30} color='white'></Ionicons>
         </Pressable>
     );
 }

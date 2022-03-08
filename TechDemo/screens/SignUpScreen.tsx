@@ -15,7 +15,7 @@ export default function SignUpScreen() {
 
   return (
     <>
-    <MyAppBar title='Sign Up' leadingIcon='arrow-back-sharp' />
+    {/* <MyAppBar title='Sign Up' leadingIcon='arrow-back-sharp' /> */}
     <View style={styles.container}>
       <MyField title='First Name' type='text' onChangeFn={setFName} />
       <MyField title='Last Name' type='text' onChangeFn={setLName} />
