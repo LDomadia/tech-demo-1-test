@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, View} from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
 import MyButton from '../components/MyButton';
 import MyField from '../components/MyField';
 import { signUpWithEmail } from '../services/firebase';
@@ -15,7 +15,7 @@ export default function SignUpScreen() {
 
   return (
     <>
-    {/* <MyAppBar title='Sign Up' leadingIcon='arrow-back-sharp' /> */}
+    <StatusBar style="light" />
     <View style={styles.container}>
       <MyField title='First Name' type='text' onChangeFn={setFName} />
       <MyField title='Last Name' type='text' onChangeFn={setLName} />
