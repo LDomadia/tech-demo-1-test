@@ -14,14 +14,16 @@ export default function SignUpScreen() {
   const [password, setPassword] = useState("");
 
   return (
+    <>
+    <MyAppBar title='Sign Up' leadingIcon='arrow-back-sharp' />
     <View style={styles.container}>
       <MyField title='First Name' type='text' onChangeFn={setFName} />
       <MyField title='Last Name' type='text' onChangeFn={setLName} />
       <MyField title='Email' type='text' onChangeFn={setEmail} />
       <MyField title='Password' type='text' onChangeFn={setPassword} />
-      <MyButton text="Sign Up" type="primary" size="large" onPressFn={
-      () => { signUpWithEmail(fName, lName, email, password) }} />
+      <MyButton text="Sign Up" type="primary" size="large" onPressFn={() => { signUpWithEmail(fName, lName, email, password); } } />
     </View>
+    </>
   );
 }
 
