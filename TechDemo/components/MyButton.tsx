@@ -5,9 +5,9 @@ import { Pressable, Text, StyleSheet } from "react-native";
 
 export type Props = {
     text: string,
-    type: string,
-    size: string,
-    onPressFn: Function
+    type?: string,
+    size?: string,
+    onPressFn?: Function
 }
 
 const MyButton = (props: any) => {

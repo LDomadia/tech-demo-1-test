@@ -4,6 +4,11 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignUpScreen from './screens/SignUpScreen';
 import StartUpScreen from './screens/StartUpScreen';
 
+export type RootStackParamList = {
+  StartUp: undefined,
+  SignUp: undefined
+}
+
 const Stack = createNativeStackNavigator();
 
 export default function App() {

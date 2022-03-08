@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View} from 'react-native';
+import { StyleSheet, View, Dimensions} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import MyButton from '../components/MyButton';
 import MyField from '../components/MyField';
@@ -21,7 +21,9 @@ export default function SignUpScreen() {
       <MyField title='Last Name' type='text' onChangeFn={setLName} />
       <MyField title='Email' type='text' onChangeFn={setEmail} />
       <MyField title='Password' type='text' onChangeFn={setPassword} />
-      <MyButton text="Sign Up" type="primary" size="large" onPressFn={() => { signUpWithEmail(fName, lName, email, password); } } />
+        <MyButton text="Sign Up" type="primary" size="large" onPressFn={() => { signUpWithEmail(fName, lName, email, password); } } />
+        <View style={{height: Dimensions.get('screen').width * 0.05}}></View>
+        <MyButton text="Google Sign In" type="secondary" size="large" onPressFn={() => {}} />
     </View>
     </>
   );
@@ -29,14 +31,9 @@ export default function SignUpScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 2,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  fixToText: {
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    alignItems: 'center',
   },
 });
