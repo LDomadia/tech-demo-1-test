@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, addDoc, collection } from 'firebase/firestore';
 import Constants from 'expo-constants';
 
@@ -28,6 +28,29 @@ export const signUpWithEmail = async (fName: string, lName: string, email: strin
         });
         console.log(user);
         await addNewUser(fName, lName, email);
+        return 'success'
+    } catch (e) {
+        console.log(e);
+        return e;
+    }
+}
+
+export const logInWithEmail = async (email: string, password: string) => {
+    try {
+        let result = await signInWithEmailAndPassword(auth, email, password);
+        user = result.user;
+        return 'success'
+    } catch (e) {
+        console.log(e);
+        return e;
+    }
+}
+
+export const logOut = async () => {
+    try {
+        let result = await logOut();
+        user = null;
+        return 'success'
     } catch (e) {
         console.log(e);
     }

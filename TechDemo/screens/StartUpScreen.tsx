@@ -1,13 +1,7 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { StatusBar } from 'expo-status-bar';
 import React from "react";
 import { View, Dimensions, StyleSheet, Text } from "react-native";
-import { RootStackParamList } from '../App';
 import MyButton from '../components/MyButton'
-
-// type ScreenProps = {
-//     navigation: NativeStackScreenProps<RootStackParamList>
-// }
 
 type ScreenProps = {
     navigation: any
@@ -20,7 +14,7 @@ export default function StartUpScreen({ navigation }: ScreenProps) {
           <StatusBar style="auto" />
           <View style={{height: Dimensions.get('screen').width * 0.6}}></View>
           <View style={styles.fixToText}>
-            <MyButton type="primary" text="Login" size="large"/>
+            <MyButton type="primary" text="Login" size="large" onPressFn={() => navigation.navigate("LogIn")}/>
             <View style={{height: Dimensions.get('screen').width * 0.05}}></View>
             <MyButton type="secondary" text="Sign Up" size="large" onPressFn={() => navigation.navigate("SignUp")}/>
           </View>
