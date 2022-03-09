@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from 'firebase/auth';
-import { getFirestore, addDoc, collection, query, where, getDocs, getDoc, doc } from 'firebase/firestore';
+import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { getFirestore, addDoc, collection, query, where, getDocs } from 'firebase/firestore';
 import Constants from 'expo-constants';
 
 const firebaseConfig = {
@@ -48,8 +48,9 @@ export const logInWithEmail = async (email: string, password: string) => {
 
 export const logOut = async () => {
     try {
-        let result = await logOut();
-        user = null;
+        await signOut(auth);
+        user = auth.currentUser;
+        console.log(user)
         return 'success'
     } catch (e) {
         console.log(e);
