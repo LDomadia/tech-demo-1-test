@@ -73,13 +73,6 @@ const addNewUser = async (fName: string, lName: string, email: string) => {
 
 export const getFirstName = async () => {
     try {
-        // const userRef = doc(firestore, "users", userDocId);
-        // const userSnap = await getDoc(userRef);
-
-        // if (userSnap.exists()) {
-        //     console.log(userSnap.data()['first_name']);
-        //     return userSnap.data()['first_name'];
-        // }
         let firstName = 'Temp';
         const q = query(
             collection(firestore, "users"), 

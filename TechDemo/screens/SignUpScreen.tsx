@@ -29,7 +29,7 @@ export default function SignUpScreen({ navigation }: ScreenProps) {
             let firstName = await getFirstName();
             navigation.navigate("Home", {firstName: firstName});
           }
-        } } />
+        }} />
         <View style={{height: Dimensions.get('screen').width * 0.05}}></View>
     </View>
     </>

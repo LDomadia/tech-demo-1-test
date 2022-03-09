@@ -3,7 +3,7 @@ import { StyleSheet, View, Dimensions} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import MyButton from '../components/MyButton';
 import MyField from '../components/MyField';
-import { getFirstName, logInWithEmail, signUpWithEmail } from '../services/firebase';
+import { getFirstName, logInWithEmail } from '../services/firebase';
 
 type ScreenProps = {
   navigation: any
