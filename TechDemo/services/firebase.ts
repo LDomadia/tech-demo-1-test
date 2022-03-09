@@ -1,7 +1,8 @@
 import { initializeApp } from 'firebase/app';
-import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getFirestore, addDoc, collection } from 'firebase/firestore';
 import Constants from 'expo-constants';
+import React from 'react';
 
 const firebaseConfig = {
   apiKey: Constants.manifest?.extra?.firebaseApiKey,
@@ -14,23 +15,33 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const firestore = getFirestore();
+const firestore = getFirestore(app);
 
 // AUTHENTICATION // ---------------------------------------------------------
+let user = auth.currentUser;
+
 export const signUpWithEmail = async (fName: string, lName: string, email: string, password: string) => {
     try {
-        await createUserWithEmailAndPassword(auth, email, password);
-        console.log('Success!')
+        let result = await createUserWithEmailAndPassword(auth, email, password);
+        user = result.user;
+        console.log(user);
+        await addNewUser(fName, lName, email);
     } catch (e) {
         console.log(e);
     }
 }
 
 // FIRESTORE // --------------------------------------------------------------
-export const addToCollection = () => {
-    
-}
-
-export const myFunction = (fName: string) => {
-    console.log(fName)
+const addNewUser = async (fName: string, lName: string, email: string) => {
+    try {
+        const userData = {
+            first_name: fName,
+            last_name: lName,
+            email: email
+        }
+        const dofRef = await addDoc(collection(firestore, "users"), userData);
+        console.log(dofRef.id);
+    } catch (e) {
+        console.log(e);
+    }
 }
