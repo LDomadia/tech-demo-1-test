@@ -1,13 +1,17 @@
 import { View, Text, StyleSheet } from "react-native";
+import { getFirstName } from "../services/firebase";
 
 type ScreenProps = {
-    navigation: any
+    navigation: any,
+    route: any
 }
 
-export default function HomeScreen({ navigation }: ScreenProps) {
+// const firstName = async () => await getFirstName();
+
+export default function HomeScreen({ navigation, route }: ScreenProps) {
     return (
         <View style={styles.container}>
-            <Text style={{fontSize: 40}}>Hi</Text>
+            <Text style={{fontSize: 40}}>Hi {route.params.firstName}</Text>
         </View>
     );
 }

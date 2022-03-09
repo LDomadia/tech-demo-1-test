@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from 'firebase/auth';
-import { getFirestore, addDoc, collection } from 'firebase/firestore';
+import { getFirestore, addDoc, collection, query, where, getDocs, getDoc, doc } from 'firebase/firestore';
 import Constants from 'expo-constants';
 
 const firebaseConfig = {
@@ -64,8 +64,34 @@ const addNewUser = async (fName: string, lName: string, email: string) => {
             last_name: lName,
             email: email
         }
-        const dofRef = await addDoc(collection(firestore, "users"), userData);
-        console.log(dofRef.id);
+        const docRef = await addDoc(collection(firestore, "users", ), userData);
+        console.log(docRef.id);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+export const getFirstName = async () => {
+    try {
+        // const userRef = doc(firestore, "users", userDocId);
+        // const userSnap = await getDoc(userRef);
+
+        // if (userSnap.exists()) {
+        //     console.log(userSnap.data()['first_name']);
+        //     return userSnap.data()['first_name'];
+        // }
+        let firstName = 'Temp';
+        const q = query(
+            collection(firestore, "users"), 
+            where("email", "==", user?.email)
+        );
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            console.log(doc.data()['first_name'])
+            firstName =  doc.data()['first_name'];
+        });
+        return firstName;
+
     } catch (e) {
         console.log(e);
     }
