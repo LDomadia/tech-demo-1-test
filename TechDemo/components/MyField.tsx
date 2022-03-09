@@ -6,17 +6,19 @@ import { TextInput, Text, StyleSheet, View } from "react-native";
 export type Props = {
     title: string,
     type: string,
+    secure?: boolean,
     onChangeFn: Function
 }
 
-const MyField: React.FC<Props> = ({ title, type, onChangeFn }) => {
+const MyField: React.FC<Props> = ({ title, type, secure, onChangeFn }) => {
     const [focus, setFocus] = useState(false);
     return ( 
         <View style={styles.container}>
             <Text style={styles.text}>{title}</Text>
             <TextInput 
                 style={focus ? styles.focus : styles.input} 
-                autoCapitalize={"none"} 
+                autoCapitalize={"none"}
+                secureTextEntry={secure}
                 onFocus={() => setFocus(true)} 
                 onBlur={() => setFocus(false)} 
                 onChangeText={(value) => onChangeFn(value)}/>

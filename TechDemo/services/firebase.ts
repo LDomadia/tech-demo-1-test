@@ -1,8 +1,7 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { getFirestore, addDoc, collection } from 'firebase/firestore';
 import Constants from 'expo-constants';
-import React from 'react';
 
 const firebaseConfig = {
   apiKey: Constants.manifest?.extra?.firebaseApiKey,
@@ -24,6 +23,9 @@ export const signUpWithEmail = async (fName: string, lName: string, email: strin
     try {
         let result = await createUserWithEmailAndPassword(auth, email, password);
         user = result.user;
+        await updateProfile(user, {
+            displayName: fName + ' ' + lName,
+        });
         console.log(user);
         await addNewUser(fName, lName, email);
     } catch (e) {

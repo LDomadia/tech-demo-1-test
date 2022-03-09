@@ -20,7 +20,7 @@ export default function SignUpScreen() {
       <MyField title='First Name' type='text' onChangeFn={setFName} />
       <MyField title='Last Name' type='text' onChangeFn={setLName} />
       <MyField title='Email' type='text' onChangeFn={setEmail} />
-      <MyField title='Password' type='text' onChangeFn={setPassword} />
+      <MyField title='Password' type='text' secure={true} onChangeFn={setPassword} />
         <MyButton text="Sign Up" type="primary" size="large" onPressFn={() => { signUpWithEmail(fName, lName, email, password); } } />
         <View style={{height: Dimensions.get('screen').width * 0.05}}></View>
     </View>
