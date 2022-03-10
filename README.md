@@ -1,2 +1,4 @@
 # tech-demo-1-test
-For SSW 322 Tech Demo - React Native and using Component Libraries
+For SSW 322 Tech Demo
+
+This demo uses React Native, Expo, and Firebase Version 9
